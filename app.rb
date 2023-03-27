@@ -1,17 +1,11 @@
 require_relative './author'
 require_relative './game'
-require_relative './label'
+require_relative './input'
 
 AUTHORS = [
     ['Stephan', 'King'],
     ['George', 'Orwell'],
     ['JK', 'Rowling']
-]
-
-LABELS = [
-    ['Title', 'Color'],
-    ['CSGO', 'Red'],
-    ['My Book', 'Green']
 ]
 
 class App 
@@ -25,9 +19,6 @@ class App
     def init_constants
         AUTHORS.each do |author|
             @author_list << Author.new(author[0], author[1])
-        end
-        LABELS.each do |label|
-            @label_list << Label.new(label[0], label[1])
         end
     end
 
@@ -48,10 +39,8 @@ class App
     def create_game
         print "Multiplayer (y/n) ? >> "
         multiplayer = gets.chomp.downcase == 'y'
-        print "Published Date >> "
-        publish_date = gets.chomp
-        print "Last Played Date >> "
-        last_played_at = gets.chomp 
+        publish_date = Input.get_date("Published Date >> ")
+        last_played_at = Input.get_date("Last Played Date >> ")
 
         game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
         @game_list << game 
