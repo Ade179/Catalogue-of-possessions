@@ -14,5 +14,5 @@ class Game < Item
 end
 
 # Checking the method
-game = Game.new(publish_date: '2001-2-2', multiplayer: true, last_played_at: '2013-3-3', archived: false)
-puts game.can_be_archived?
+# game = Game.new(publish_date: '2001-2-2', multiplayer: true, last_played_at: '2013-3-3', archived: false)
+# puts game.can_be_archived?
