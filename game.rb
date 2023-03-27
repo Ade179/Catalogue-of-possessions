@@ -5,7 +5,7 @@ class Game < Item
   attr_reader :multiplayer, :last_played_at
 
   def initialize(publish_date:, multiplayer:, last_played_at:)
-    super(publish_date: publish_date, archived: archived)
+    super(publish_date: publish_date)
     @multiplayer = multiplayer
     @last_played_at = Date.parse(last_played_at)
   end
@@ -15,7 +15,7 @@ class Game < Item
   end
 
   def to_s
-    "<#{self.class}> #{self.label.title} [Author: #{self.author.first_name}, Genre: #{self.genre?.name}]"
+    "<#{self.class} ID: #{@id}> [Multiplayer: #{@multiplayer}, Published: #{@publish_date}, Last Played: #{@last_played_at}]"
   end
 end
 

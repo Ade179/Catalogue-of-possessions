@@ -14,6 +14,6 @@ class Author
   end
 
   def to_s 
-    "<#{self.class}> #{self.first_name.capitalize} #{self.last_name.capitalize}"
+    "<#{self.class} ID: #{@id}> #{@first_name.capitalize} #{@last_name.capitalize}"
   end
 end

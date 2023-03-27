@@ -53,7 +53,8 @@ def main
     when '9'
       puts 'Add a music album'
     when '10'
-      puts 'Add a game'
+      puts '# Add a game'
+      app.create_game
     else
       puts 'Invalid Option!'
     end

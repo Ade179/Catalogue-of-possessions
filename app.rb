@@ -46,5 +46,16 @@ class App
     end
 
     def create_game
+        print "Multiplayer (y/n) ? >> "
+        multiplayer = gets.chomp.downcase == 'y'
+        print "Published Date >> "
+        publish_date = gets.chomp
+        print "Last Played Date >> "
+        last_played_at = gets.chomp 
+
+        game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
+        @game_list << game 
+
+        puts "*New game added successfully!", game.to_s
     end
 end
