@@ -1,3 +1,5 @@
+require_relative './app'
+
 def display_options
   puts
   puts 'Available Options'
@@ -19,10 +21,13 @@ end
 # rubocop:disable Metrics/CyclomaticComplexity
 
 def main
+  app = App.new
+
   puts 'Catalogue Of Possessions App'
 
   loop do
     display_options
+    print "Enter your option >> "
     input = gets.chomp.downcase
     break if input == 'x'
 
@@ -32,13 +37,15 @@ def main
     when '2'
       puts 'Album list'
     when '3'
-      puts 'Game list'
+      puts '# Game list'
+      app.display_games
     when '4'
       puts 'Genres List'
     when '5'
       puts 'Label list'
     when '6'
-      puts 'Author list'
+      puts '# Author list'
+      app.display_authors
     when '7'
       puts 'Source list'
     when '8'
