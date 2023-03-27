@@ -15,16 +15,15 @@ class Item
 
   def can_be_archived?
     published = Date.parse(@publish_date)
-    if Time.new.year - published.year > 10
-      return true
-    end
+    return true if Time.new.year - published.year > 10
+
     false
   end
 
   def move_to_archive?
-    if can_be_archived?
-      @archive = true
-    end
+    return unless can_be_archived?
+
+    @archive = true
   end
 
   def add_author(author)
@@ -46,5 +45,4 @@ class Item
     @source = source
     source.items << self unless source.items.include?(self)
   end
-
 end
