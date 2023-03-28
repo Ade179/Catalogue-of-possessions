@@ -22,6 +22,7 @@ class App
   end
 
   def display_authors
+    puts '# Author List'
     @author_list.each_with_index do |author, i|
       puts "#{i + 1}. #{author}"
     end
@@ -30,12 +31,14 @@ class App
   def display_games
     return puts '[i] No game here!' if @game_list.empty?
 
+    puts '# Game List'
     @game_list.each_with_index do |game, i|
       puts "#{i + 1}. #{game}"
     end
   end
 
   def create_game
+    puts '# Create New Game'
     print 'Game Title >> '
     title = gets.chomp
     print 'Multiplayer (y/n) ? >> '

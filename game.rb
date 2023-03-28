@@ -16,7 +16,8 @@ class Game < Item
   end
 
   def to_s
-    "<#{self.class} ID: #{@id}> #{@title.upcase} [Multiplayer: #{@multiplayer}, Published: #{@publish_date}, Last Played: #{@last_played_at}]"
+    "<#{self.class} ID: #{@id}> #{@title.upcase}" \
+      " [Multiplayer: #{@multiplayer}, Published: #{@publish_date}, Last Played: #{@last_played_at}]"
   end
 
   def to_h

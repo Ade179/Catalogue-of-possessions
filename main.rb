@@ -27,7 +27,7 @@ def main
 
   loop do
     display_options
-    print "Enter your option >> "
+    print 'Enter your option >> '
     input = gets.chomp.downcase
     break if input == 'x'
 
@@ -37,14 +37,12 @@ def main
     when '2'
       puts 'Album list'
     when '3'
-      puts '# Game list'
       app.display_games
     when '4'
       puts 'Genres List'
     when '5'
       puts 'Label list'
     when '6'
-      puts '# Author list'
       app.display_authors
     when '7'
       puts 'Source list'
@@ -53,7 +51,6 @@ def main
     when '9'
       puts 'Add a music album'
     when '10'
-      puts '# Add a game'
       app.create_game
     else
       puts 'Invalid Option!'
