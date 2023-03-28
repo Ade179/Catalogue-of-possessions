@@ -6,7 +6,7 @@ def display_options
   puts '[1] List All Books'
   puts '[2] List All Music Albums'
   puts '[3] List All Games'
-  puts "[4] List All Genres (e.g 'Comedy', 'Thriller')"
+  puts "[4] List All Genres (e.g. 'Comedy', 'Thriller')"
   puts "[5] List All Labels (e.g. 'Gift', 'New')"
   puts "[6] List All Authors (e.g. 'Stephen King')"
   puts "[7] List All Sources (e.g. 'From a friend', 'Online shop')"
@@ -59,7 +59,7 @@ def main
       puts 'Invalid Option!'
     end
   end
-  puts 'Thanks for using our App'
+  app.close
 end
 
 # rubocop:enable Metrics/CyclomaticComplexity

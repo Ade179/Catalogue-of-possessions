@@ -1,6 +1,7 @@
 require_relative './author'
 require_relative './game'
 require_relative './input'
+require_relative './storage'
 
 AUTHORS = [
     ['Stephan', 'King'],
@@ -9,10 +10,13 @@ AUTHORS = [
 ]
 
 class App 
+    attr_reader :game_list, :author_list
+
     def initialize
         @author_list = []
         @game_list = []
         @label_list = []
+        @storage = Storage.new(self)
         init_constants
     end
 
@@ -37,14 +41,22 @@ class App
     end
 
     def create_game
-        print "Multiplayer (y/n) ? >> "
+        print "Game Title >> "
+        title = gets.chomp
+        print "Multiplayer (y/n) ? >> "  
         multiplayer = gets.chomp.downcase == 'y'
         publish_date = Input.get_date("Published Date >> ")
         last_played_at = Input.get_date("Last Played Date >> ")
 
-        game = Game.new(publish_date: publish_date, multiplayer: multiplayer, last_played_at: last_played_at)
+        game = Game.new(publish_date: publish_date, multiplayer: multiplayer, title: title, last_played_at: last_played_at)
         @game_list << game 
 
         puts "*New game added successfully!", game.to_s
     end
+
+    def close
+        puts 'Thanks for using our App'
+        @storage.save_data
+    end
+
 end
