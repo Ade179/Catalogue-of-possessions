@@ -1,4 +1,5 @@
-require_relative './label'
+require_relative '../label'
+require_relative '../item'
 
 describe Label do
   context 'When providing Label information' do
@@ -11,10 +12,10 @@ describe Label do
 
   context 'when adding a new book' do
     label = Label.new('Tempest', 'red')
-    item = Item.new('The Tempest', 'William Shakespeare')
-
     it 'adds a new book to the label' do
-      expect(label.add_item(item)).to eq(item)
+      item = Item.new(publish_date: '2021-03-03', archived: true)
+      label.add_item(item)
+      expect(label.items[0]).to eql item
     end
   end
 end

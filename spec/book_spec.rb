@@ -2,7 +2,7 @@ require_relative '../book'
 
 describe Book do
   context 'When providing book information' do
-    book = Book.new('Atoms', 'Bad')
+    book = Book.new('Atoms', 'Bad', '2021-03-03', false)
 
     it 'creates a new book with title Atoms' do
       expect(book).to be_an_instance_of Book
