@@ -3,9 +3,9 @@ class Label
   attr_accessor :title, :color
   attr_reader :id, :items
 
-  def initialize(tile, color)
+  def initialize(title, color)
     @id = rand(1000..9999)
-    @tile = tile
+    @title = title
     @color = color
     @items = []
   end
