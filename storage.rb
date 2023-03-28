@@ -1,6 +1,5 @@
 require 'json'
 
-
 class Storage
   GAME_FILE = './data/game.json'.freeze
   AUTHOR_FILE = './data/author.json'.freeze
