@@ -15,6 +15,7 @@ class Storage
     save_games
     save_authors
     save_books
+    save_label
   end
 
   def load_data
