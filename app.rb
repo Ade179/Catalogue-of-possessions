@@ -2,6 +2,7 @@ require_relative './author'
 require_relative './game'
 require_relative './input'
 require_relative './storage'
+require_relative './book'
 
 AUTHORS = [
   %w[Stephan King],
@@ -10,12 +11,13 @@ AUTHORS = [
 ].freeze
 
 class App
-  attr_accessor :game_list, :author_list
+  attr_accessor :game_list, :author_list, :books, :label_list
 
   def initialize
     @author_list = []
     @game_list = []
     @label_list = []
+    @books = []
     @storage = Storage.new(self)
     @storage.load_data
     init_constants
@@ -37,6 +39,26 @@ class App
     end
   end
 
+  def list_books
+    if @books.empty?
+      puts 'There are no books yet'
+    else
+      @books.each_with_index do |book, i|
+        puts "#{i + 1}. #{book}"
+      end
+    end
+  end
+
+  def list_labels
+    if @label_list.empty?
+      puts 'There are no labels yet'
+    else
+      @label_list.each_with_index do |label, i|
+        puts "#{i + 1}. #{label}"
+      end
+    end
+  end
+
   def create_game
     puts '# Create New Game'
     print 'Game Title >> '
@@ -51,6 +73,21 @@ class App
     @game_list << game
 
     puts '*New game added successfully!', game.to_s
+  end
+
+  def add_book
+    puts '# Make a new book'
+    print 'Book Publisher :'
+    publisher = gets.chomp
+    print 'cover_state :'
+    cover_state = gets.chomp
+    print 'publish_date :'
+    publish_date = gets.chomp
+    print 'archived:'
+    archived = gets.chomp
+
+    book = Book.new(publisher, cover_state, publish_date, archived)
+    @books << book
   end
 
   def close

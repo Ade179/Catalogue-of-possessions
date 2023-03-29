@@ -33,7 +33,7 @@ def main
 
     case input
     when '1'
-      puts 'Book list'
+      app.list_books
     when '2'
       puts 'Album list'
     when '3'
@@ -41,13 +41,13 @@ def main
     when '4'
       puts 'Genres List'
     when '5'
-      puts 'Label list'
+      app.list_labels
     when '6'
       app.display_authors
     when '7'
       puts 'Source list'
     when '8'
-      puts 'Add a book'
+      app.add_book
     when '9'
       puts 'Add a music album'
     when '10'
