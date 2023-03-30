@@ -3,6 +3,9 @@ require_relative './game'
 require_relative './input'
 require_relative './storage'
 require_relative './book'
+require_relative './label'
+require_relative './music_album'
+require_relative './genre'
 
 AUTHORS = [
   %w[Stephan King],
@@ -11,13 +14,15 @@ AUTHORS = [
 ].freeze
 
 class App
-  attr_accessor :game_list, :author_list, :books, :label_list
+  attr_accessor :game_list, :author_list, :books, :label_list, :music_album_list, :genre_list
 
   def initialize
     @author_list = []
     @game_list = []
     @label_list = []
     @books = []
+    @genre_list = []
+    @music_album_list = []
     @storage = Storage.new(self)
     @storage.load_data
     init_constants
@@ -58,6 +63,26 @@ class App
       end
     end
   end
+    
+  def list_genre
+    if @genre_list.empty?
+      puts 'There are no genre yet'
+    else
+      @genre_list.each_with_index do |genre, i|
+        puts "#{i + 1}. #{genre}"
+      end
+    end
+  end
+
+  def list_music_album
+    if @music_album_list.empty?
+      puts 'There are no genre yet'
+    else
+      @music_album_list.each_with_index do |music_album, i|
+        puts "#{i + 1}. #{music_album}"
+      end
+    end
+  end
 
   def create_game
     puts '# Create New Game'
@@ -88,6 +113,21 @@ class App
 
     book = Book.new(publisher, cover_state, publish_date, archived)
     @books << book
+  end
+
+  def add_music_album
+    puts '# Create new music album'
+    print 'name :: '
+    name = gets.chomp
+    print 'artist :: '
+    artist = gets.chomp
+    print 'on_spotify :: '
+    on_spotify = gets.chomp
+
+    publish_date = Input.get_date('Published Date:: ')
+
+    music_album = MusicAlbum.new(name, artist, publish_date, on_spotify)
+    @music_album_list << music_album
   end
 
   def close

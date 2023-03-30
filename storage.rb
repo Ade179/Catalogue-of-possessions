@@ -1,11 +1,12 @@
 require 'json'
-require './label'
 
 class Storage
   GAME_FILE = './data/game.json'.freeze
   AUTHOR_FILE = './data/author.json'.freeze
   BOOK_FILE = './data/book.json'.freeze
   LABEL_FILE = './data/label.json'.freeze
+  MUSIC_ALBUM_FILE ='./data/music_album.json'.freeze
+  GENRE_FILE = './data/genre.json'.freeze
 
   def initialize(app)
     @app = app
@@ -16,12 +17,16 @@ class Storage
     save_authors
     save_books
     save_label
+    save_music_albums
+    save_genres
   end
 
   def load_data
     load_games(GAME_FILE, @app.game_list)
     load_book(BOOK_FILE, @app.books)
     load_label(LABEL_FILE, @app.label_list)
+    load_music_albums(MUSIC_ALBUM_FILE, @app.music_album_list)
+    load_genre(GENRE_FILE, @app.genre_list)
   end
 
   private
@@ -34,6 +39,16 @@ class Storage
   def save_books
     book_hash = @app.books.map(&:to_h)
     File.write(BOOK_FILE, JSON.generate(book_hash))
+  end
+
+  def save_music_albums
+    music_album_hash = @app.music_album_list.map(&:to_h)
+    File.write(MUSIC_ALBUM_FILE, JSON.generate(music_album_hash))
+  end
+
+  def save_genres
+    genres_hash = @app.genre_list.map(&:to_h)
+    File.write(GENRE_FILE, JSON.generate(genres_hash))
   end
 
   def load_book(filename, array)
@@ -79,6 +94,28 @@ class Storage
   def save_authors
     authors_hash = @app.author_list.map(&:to_h)
     File.write(AUTHOR_FILE, JSON.generate(authors_hash))
+  end
+
+  def load_music_albums(filename, array)
+    music_albums = read_file(filename)
+    music_albums.each do |music_album|
+      name = music_album['name']
+      artist = music_album['artist']
+      publish_date = music_album['publish_date']
+      on_spotify = music_album['on_spotify']
+
+      array << MusicAlbum.new(name, artist, publish_date, on_spotify)
+    end
+  end
+
+  
+  def load_genre(filename, array)
+      genres = read_file(filename)
+      genres.each do |genre|
+      name = genre['name']
+
+      array << Genre.new(name)
+    end
   end
 
   def read_file(filename)
