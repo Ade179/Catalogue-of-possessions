@@ -63,7 +63,7 @@ class App
       end
     end
   end
-    
+
   def list_genre
     if @genre_list.empty?
       puts 'There are no genre yet'

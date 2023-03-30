@@ -5,7 +5,7 @@ class Storage
   AUTHOR_FILE = './data/author.json'.freeze
   BOOK_FILE = './data/book.json'.freeze
   LABEL_FILE = './data/label.json'.freeze
-  MUSIC_ALBUM_FILE ='./data/music_album.json'.freeze
+  MUSIC_ALBUM_FILE = './data/music_album.json'.freeze
   GENRE_FILE = './data/genre.json'.freeze
 
   def initialize(app)
@@ -108,10 +108,9 @@ class Storage
     end
   end
 
-  
   def load_genre(filename, array)
-      genres = read_file(filename)
-      genres.each do |genre|
+    genres = read_file(filename)
+    genres.each do |genre|
       name = genre['name']
 
       array << Genre.new(name)
