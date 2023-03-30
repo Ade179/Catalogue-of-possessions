@@ -10,6 +10,15 @@ class MusicAlbum < Item
     @on_spotify = on_spotify
   end
 
+  def to_s
+    "<#{self.class} ID: #{@id}>" \
+      "[name: #{@name}, artist: #{@artist}, publish_date: #{@publish_date}, on_spotify: #{@on_spotify}]"
+  end
+
+  def to_h
+    { id: @id, name: @name, artist: @artist, publish_date: @publish_date.to_s, on_spotify: @on_spotify }
+  end
+
   def can_be_archived?
     super && @on_spotify
   end
