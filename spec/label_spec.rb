@@ -1,6 +1,4 @@
-require 'date'
-require_relative '../item'
-require_relative '../book'
+require_relative './spec_helper'
 
 RSpec.describe Book do
   let(:publisher) { 'william-shakespeare' }
@@ -46,7 +44,7 @@ RSpec.describe Book do
 
   describe '#to_s' do
     it 'returns a string representation of the book' do
-      y = "<#{described_class} ID: #{subject.id}>" \
+      y = "<#{described_class} ID: #{subject.id}> " \
           "[Publisher: #{publisher}, Cover_state: #{cover_state}, publish_date: #{publish_date}, archive: #{archived}]"
       expect(subject.to_s).to eq(y)
     end

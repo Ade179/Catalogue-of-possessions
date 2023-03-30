@@ -1,1 +1,5 @@
-[{"id":5792,"name":"Comedy","items":"[]"},{"id":3961,"name":"Hip-hop","items":"[]"}]
+[
+  { "id": 1956, "name": "Action", "items": "[]" },
+  { "id": 5345, "name": "Sci-Fi", "items": "[]" },
+  { "id": 6126, "name": "Comedy", "items": "[]" }
+]

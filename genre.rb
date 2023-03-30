@@ -8,7 +8,7 @@ class Genre
   end
 
   def to_s
-    "<#{self.class} ID: #{@id}>" \
+    "<#{self.class} ID: #{@id}> " \
       "[name: #{@name} , items: #{@items}]"
   end
 
