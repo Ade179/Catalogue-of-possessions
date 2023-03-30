@@ -1,7 +1,6 @@
 require_relative '../genre'
 require_relative '../music_album'
 
-
 describe Genre do
   before :all do
     @genre = Genre.new('Comedy')
