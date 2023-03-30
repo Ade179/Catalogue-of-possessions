@@ -38,3 +38,21 @@ CREATE TABLE books (
     source_id INT REFERENCES sources(id),
     label_id INT REFERENCES labels(id)
 );
+
+CREATE TABLE music_albums (
+    id INT GENERATED ALWAYS AS IDENTITY,
+    on_spotify BOOLEAN,
+    publish_date DATE,
+    archived BOOLEAN,
+    PRIMARY KEY (id),
+    genre_id INT REFERENCES genres(id),
+    author_id INT REFERENCES authors(id),
+    source_id INT REFERENCES sources(id),
+    label_id INT REFERENCES labels(id)
+);
+
+CREATE TABLE genres (
+    id  INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(100);
+    PRIMARY KEY(id)
+);
