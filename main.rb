@@ -14,6 +14,7 @@ def main
 
     Console.run_command(app, input)
   end
+  
   app.close
 end
 

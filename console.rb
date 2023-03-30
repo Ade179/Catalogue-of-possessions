@@ -16,9 +16,9 @@ class Console
   end
 
   def self.run_command(app, input)
-    if (1..3).include?(input.to_i)
+    if (1..6).include?(input.to_i)
       Console.display_list(app, input)
-    elsif (4..9).include?(input.to_i)
+    elsif (7..9).include?(input.to_i)
       Console.add_new_item(app, input)
     else
       puts 'Invalid Option!'
@@ -33,17 +33,17 @@ class Console
       app.list_music_album
     when '3'
       app.display_games
-    end
-  end
-
-  def self.add_new_item(app, input)
-    case input
     when '4'
       app.list_genre
     when '5'
       app.list_labels
     when '6'
       app.display_authors
+    end
+  end
+
+  def self.add_new_item(app, input)
+    case input
     when '7'
       app.add_book
     when '8'

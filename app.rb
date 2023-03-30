@@ -42,6 +42,7 @@ class App
     if @books.empty?
       puts 'There are no books yet'
     else
+      puts "# Book List"
       @books.each_with_index do |book, i|
         puts "#{i + 1}. #{book}"
       end
@@ -52,6 +53,7 @@ class App
     if @label_list.empty?
       puts 'There are no labels yet'
     else
+      puts "# Label List"
       @label_list.each_with_index do |label, i|
         puts "#{i + 1}. #{label}"
       end
@@ -62,6 +64,7 @@ class App
     if @genre_list.empty?
       puts 'There are no genre yet'
     else
+      puts "# Genre List"
       @genre_list.each_with_index do |genre, i|
         puts "#{i + 1}. #{genre}"
       end
@@ -72,6 +75,7 @@ class App
     if @music_album_list.empty?
       puts 'There are no album yet'
     else
+      puts "# Music Album List"
       @music_album_list.each_with_index do |music_album, i|
         puts "#{i + 1}. #{music_album}"
       end
@@ -96,35 +100,38 @@ class App
 
   def add_book
     puts '# Make a new book'
-    print 'Book Publisher :'
+    print 'Book Publisher : '
     publisher = gets.chomp
-    print 'Cover State :'
+    print 'Cover State : '
     cover_state = gets.chomp
     publish_date = Input.get_date('Published Date : ')
-    print 'Archived (y/n) ? :'
+    print 'Archived (y/n) ? : '
     archived = gets.chomp.downcase == 'y'
 
     book = Book.new(publisher, cover_state, publish_date, archived)
     @books << book
+    puts '*New book added successfully!', book.to_s
   end
 
   def add_music_album
     puts '# Create new music album'
-    print 'name :: '
+    print 'Name :: '
     name = gets.chomp
-    print 'artist :: '
+    print 'Artist :: '
     artist = gets.chomp
-    print 'on_spotify (y/n) ? :: '
+    print 'On Spotify (y/n) ? :: '
     on_spotify = gets.chomp.downcase == 'y'
-    publish_date = Input.get_date('Published Date:: ')
+    publish_date = Input.get_date('Published Date :: ')
 
 
     music_album = MusicAlbum.new(name, artist, publish_date, on_spotify)
     @music_album_list << music_album
+    puts '*New album added successfully!', music_album.to_s
   end
 
   def close
-    puts 'Thanks for using our App!'
     @storage.save_data
+    puts "*Data saved successfully!"
+    puts 'Thanks for using our App!'
   end
 end
