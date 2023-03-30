@@ -1,4 +1,4 @@
-require_relative '../book'
+require_relative './spec_helper'
 
 describe Book do
   context 'When providing book information' do

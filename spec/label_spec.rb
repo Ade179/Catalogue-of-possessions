@@ -1,5 +1,4 @@
-require_relative '../label'
-require_relative '../item'
+require_relative './spec_helper'
 
 describe Label do
   context 'When providing Label information' do
