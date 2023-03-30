@@ -7,11 +7,6 @@ require_relative './label'
 require_relative './music_album'
 require_relative './genre'
 
-AUTHORS = [
-  %w[Stephan King],
-  %w[George Orwell],
-  %w[JK Rowling]
-].freeze
 
 class App
   attr_accessor :game_list, :author_list, :books, :label_list, :music_album_list, :genre_list
@@ -25,7 +20,6 @@ class App
     @music_album_list = []
     @storage = Storage.new(self)
     @storage.load_data
-    init_constants
   end
 
   def display_authors
@@ -134,12 +128,5 @@ class App
     puts 'Thanks for using our App!'
     @storage.save_data
   end
-
-  private
-
-  def init_constants
-    AUTHORS.each do |author|
-      @author_list << Author.new(author[0], author[1])
-    end
-  end
+  
 end

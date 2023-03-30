@@ -23,6 +23,7 @@ class Storage
 
   def load_data
     load_games(GAME_FILE, @app.game_list)
+    load_authors(AUTHOR_FILE, @app.author_list)
     load_book(BOOK_FILE, @app.books)
     load_label(LABEL_FILE, @app.label_list)
     load_music_albums(MUSIC_ALBUM_FILE, @app.music_album_list)
@@ -36,9 +37,19 @@ class Storage
     File.write(GAME_FILE, JSON.generate(games_hash))
   end
 
+  def save_authors
+    authors_hash = @app.author_list.map(&:to_h)
+    File.write(AUTHOR_FILE, JSON.generate(authors_hash))
+  end
+
   def save_books
     book_hash = @app.books.map(&:to_h)
     File.write(BOOK_FILE, JSON.generate(book_hash))
+  end
+
+  def save_label
+    label_hash = @app.label_list.map(&:to_h)
+    File.write(LABEL_FILE, JSON.generate(label_hash))
   end
 
   def save_music_albums
@@ -61,11 +72,6 @@ class Storage
 
       array << Book.new(publisher, cover_state, publish_date, archived)
     end
-  end
-
-  def save_label
-    label_hash = @app.label_list.map(&:to_h)
-    File.write(LABEL_FILE, JSON.generate(label_hash))
   end
 
   def load_label(filename, array)
@@ -91,9 +97,14 @@ class Storage
     end
   end
 
-  def save_authors
-    authors_hash = @app.author_list.map(&:to_h)
-    File.write(AUTHOR_FILE, JSON.generate(authors_hash))
+  def load_authors(filename, array)
+    data = read_file(filename)
+    data.each do |item|
+      first_name = item['first_name']
+      last_name = item['last_name']
+
+      array << Author.new(first_name, last_name)
+    end
   end
 
   def load_music_albums(filename, array)
