@@ -10,8 +10,8 @@ describe MusicAlbum do
   describe '#to_s' do
     it 'returns a string of the music_album' do
       music_album = MusicAlbum.new('Dusk till Down', 'Alan Walker', '2016-08-01', true)
-      expout = "<MusicAlbum ID: #{music_album.id}>[name: Dusk till Down,"  \
-               ' artist: Alan Walker, publish_date: 2016-08-01, on_spotify: true]'
+      expout = "<MusicAlbum ID: #{music_album.id}>[name: Dusk till Down, " \
+               'artist: Alan Walker, publish_date: 2016-08-01, on_spotify: true]'
       expect(music_album.to_s).to eq(expout)
     end
   end
