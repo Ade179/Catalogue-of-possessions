@@ -48,8 +48,6 @@ RSpec.describe Book do
     it 'returns a string representation of the book' do
       y = "<#{described_class} ID: #{subject.id}>" \
           "[Publisher: #{publisher}, Cover_state: #{cover_state}, publish_date: #{publish_date}, archive: #{archived}]"
-
-
       expect(subject.to_s).to eq(y)
     end
   end
