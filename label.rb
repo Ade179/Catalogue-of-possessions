@@ -11,7 +11,7 @@ class Label
   end
 
   def to_s
-    "<#{self.class} ID: #{@id}>" \
+    "<#{self.class} ID: #{@id}> " \
       "[Title: #{@title} , Color: #{@color}]"
   end
 

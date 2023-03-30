@@ -1,12 +1,10 @@
-require 'rspec'
-require_relative '../item'
-require_relative '../book'
+require_relative './spec_helper'
 
 describe Book do
   describe '#to_s' do
     it 'returns a string representation of the book' do
       book = Book.new('william', 'bad', '2021-03-07', true)
-      xptouput = "<Book ID: #{book.id}>[Publisher: william, Cover_state: bad, publish_date: 2021-03-07, archive: true]"
+      xptouput = "<Book ID: #{book.id}> [Publisher: william, Cover_state: bad, publish_date: 2021-03-07, archive: true]"
 
       expect(book.to_s).to eq(xptouput)
     end

@@ -11,7 +11,7 @@ class MusicAlbum < Item
   end
 
   def to_s
-    "<#{self.class} ID: #{@id}>" \
+    "<#{self.class} ID: #{@id}> " \
       "[name: #{@name}, artist: #{@artist}, publish_date: #{@publish_date}, on_spotify: #{@on_spotify}]"
   end
 
