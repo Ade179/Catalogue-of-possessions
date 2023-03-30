@@ -42,7 +42,7 @@ class App
     if @books.empty?
       puts 'There are no books yet'
     else
-      puts "# Book List"
+      puts '# Book List'
       @books.each_with_index do |book, i|
         puts "#{i + 1}. #{book}"
       end
@@ -53,7 +53,7 @@ class App
     if @label_list.empty?
       puts 'There are no labels yet'
     else
-      puts "# Label List"
+      puts '# Label List'
       @label_list.each_with_index do |label, i|
         puts "#{i + 1}. #{label}"
       end
@@ -64,7 +64,7 @@ class App
     if @genre_list.empty?
       puts 'There are no genre yet'
     else
-      puts "# Genre List"
+      puts '# Genre List'
       @genre_list.each_with_index do |genre, i|
         puts "#{i + 1}. #{genre}"
       end
@@ -75,7 +75,7 @@ class App
     if @music_album_list.empty?
       puts 'There are no album yet'
     else
-      puts "# Music Album List"
+      puts '# Music Album List'
       @music_album_list.each_with_index do |music_album, i|
         puts "#{i + 1}. #{music_album}"
       end
@@ -131,7 +131,7 @@ class App
 
   def close
     @storage.save_data
-    puts "*Data saved successfully!"
+    puts '*Data saved successfully!'
     puts 'Thanks for using our App!'
   end
 end
