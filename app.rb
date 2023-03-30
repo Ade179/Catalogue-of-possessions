@@ -7,7 +7,6 @@ require_relative './label'
 require_relative './music_album'
 require_relative './genre'
 
-
 class App
   attr_accessor :game_list, :author_list, :books, :label_list, :music_album_list, :genre_list
 
@@ -122,7 +121,6 @@ class App
     print 'On Spotify (y/n) ? :: '
     on_spotify = gets.chomp.downcase == 'y'
     publish_date = Input.get_date('Published Date :: ')
-
 
     music_album = MusicAlbum.new(name, artist, publish_date, on_spotify)
     @music_album_list << music_album
