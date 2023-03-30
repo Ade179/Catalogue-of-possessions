@@ -70,7 +70,7 @@ class App
 
   def list_music_album
     if @music_album_list.empty?
-      puts 'There are no genre yet'
+      puts 'There are no album yet'
     else
       @music_album_list.each_with_index do |music_album, i|
         puts "#{i + 1}. #{music_album}"
@@ -98,12 +98,11 @@ class App
     puts '# Make a new book'
     print 'Book Publisher :'
     publisher = gets.chomp
-    print 'cover_state :'
+    print 'Cover State :'
     cover_state = gets.chomp
-    print 'publish_date :'
-    publish_date = gets.chomp
-    print 'archived:'
-    archived = gets.chomp
+    publish_date = Input.get_date('Published Date : ')
+    print 'Archived (y/n) ? :'
+    archived = gets.chomp.downcase == 'y'
 
     book = Book.new(publisher, cover_state, publish_date, archived)
     @books << book
@@ -115,10 +114,10 @@ class App
     name = gets.chomp
     print 'artist :: '
     artist = gets.chomp
-    print 'on_spotify :: '
-    on_spotify = gets.chomp
-
+    print 'on_spotify (y/n) ? :: '
+    on_spotify = gets.chomp.downcase == 'y'
     publish_date = Input.get_date('Published Date:: ')
+
 
     music_album = MusicAlbum.new(name, artist, publish_date, on_spotify)
     @music_album_list << music_album
@@ -128,5 +127,5 @@ class App
     puts 'Thanks for using our App!'
     @storage.save_data
   end
-  
+
 end
