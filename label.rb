@@ -10,6 +10,15 @@ class Label
     @items = []
   end
 
+  def to_s
+    "<#{self.class} ID: #{@id}>" \
+      "[Title: #{@title} , Color: #{@color}]"
+  end
+
+  def to_h
+    { id: @id, title: @title, color: @color.to_s }
+  end
+
   def add_item(item)
     @items << item unless @items.include?(item)
     item.add_label(self)

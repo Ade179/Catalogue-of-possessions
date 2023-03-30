@@ -10,6 +10,16 @@ class Book < Item
     @cover_state = cover_state
   end
 
+  def to_s
+    "<#{self.class} ID: #{@id}>" \
+      "[Publisher: #{@publisher}, Cover_state: #{@cover_state}, publish_date: #{@publish_date}, archive: #{@archived}]"
+  end
+
+  def to_h
+    { id: @id, publisher: @publisher, cover_state: @cover_state, publish_date: @publish_date.to_s,
+      archived: @archived }
+  end
+
   def can_be_archived?
     super || @cover_state == 'bad'
   end
