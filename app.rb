@@ -127,5 +127,4 @@ class App
     puts 'Thanks for using our App!'
     @storage.save_data
   end
-
 end
