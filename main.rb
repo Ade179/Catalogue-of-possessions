@@ -35,11 +35,11 @@ def main
     when '1'
       app.list_books
     when '2'
-      puts 'Album list'
+      app.list_music_album
     when '3'
       app.display_games
     when '4'
-      puts 'Genres List'
+      app.list_genre
     when '5'
       app.list_labels
     when '6'
@@ -49,7 +49,7 @@ def main
     when '8'
       app.add_book
     when '9'
-      puts 'Add a music album'
+      app.add_music_album
     when '10'
       app.create_game
     else
